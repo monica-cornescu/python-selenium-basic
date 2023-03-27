@@ -7,7 +7,7 @@ def add_numbers(a, b):
 
 @pytest.mark.math
 def test_with_small_numbers():
-    assert add_numbers(1, 3) == 44, "Adding 1 with 3 results 4"
+    assert add_numbers(1, 3) == 4, "Adding 1 with 3 results 4"
 
 
 @pytest.mark.math

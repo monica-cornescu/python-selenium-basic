@@ -18,7 +18,6 @@ class TestPositiveScenarios:
         time.sleep(2)
         # Go to webpage
         driver.get("https://practicetestautomation.com/practice-test-login/")
-        # driver.get("https://login.yahoo.com/?.src=ym&lang=nl-NL&done=https%3A%2F%2Fmail.yahoo.com%2Fconfig%2Fmail%3F.intl%3Dus")
         time.sleep(2)
 
         # Type username student into Username field
