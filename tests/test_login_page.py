@@ -1,21 +1,14 @@
-# Open browser
-# selenium 4
 import time
 
 import pytest
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
 
 
 class TestPositiveScenarios:
 
     @pytest.mark.login
     @pytest.mark.positive
-    def test_positive_login(self):
-        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
-        time.sleep(2)
+    def test_positive_login(self, driver):
         # Go to webpage
         driver.get("https://practicetestautomation.com/practice-test-login/")
         time.sleep(2)
