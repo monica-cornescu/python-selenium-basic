@@ -11,7 +11,6 @@ class TestPositiveScenarios:
     def test_positive_login(self, driver):
         # Go to webpage
         driver.get("https://practicetestautomation.com/practice-test-login/")
-        time.sleep(2)
 
         # Type username student into Username field
         username_locator = driver.find_element(By.ID, "username")
@@ -24,7 +23,6 @@ class TestPositiveScenarios:
         # Press Submit button
         submit_button_locator = driver.find_element(By.XPATH, "//button[@class='btn']")
         submit_button_locator.click()
-        time.sleep(2)
 
         # Verify new page URL contains practicetestautomation.com/logged-in-successfully/
         url_after_login = driver.current_url

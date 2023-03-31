@@ -25,7 +25,6 @@ class TestNegativeScenarios:
         # Press Submit button
         submit_button_locator = driver.find_element(By.XPATH, "//button[@class='btn']")
         submit_button_locator.click()
-        time.sleep(2)
 
         # Verify error message is displayed
         error_message_locator = driver.find_element(By.ID, "error")
