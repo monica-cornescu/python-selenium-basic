@@ -40,9 +40,10 @@ class TestExceptionsScenarios:
         row2_input_field_element.send_keys("chocolate cake")
 
         # Push Save button using locator By.name("Save"); combine element locator with click method in one command
-        driver.find_element(By.NAME, "Save").click()
+        # driver.find_element(By.NAME, "Save").click()   # with this we will get the ElementNotInteractableException
+        driver.find_element(By.XPATH, "//div[@id='row2']/button[@name='Save']").click()
 
         # Verify text saved
-        confirmation_locator = driver.find_element(By.ID, "confirmation")
+        confirmation_locator = wait.until(expcond.visibility_of_element_located((By.ID, "confirmation")))
         confirmation_message = confirmation_locator.text
         assert confirmation_message == "Row 2 was saved", "Unexpected confirmation message received"
