@@ -67,7 +67,8 @@ class TestExceptionsScenarios:
 
         # Verify that the text changed
         row1_text = row1_input_field_element.get_attribute(name="value")
-        assert row1_text == "chicken soup", "Expected chicken soup but got" + row1_text
+        print(f"Expected chicken soup but got {row1_text}")
+        assert row1_text == "chicken soup", f"Expected chicken soup but got {row1_text}"
 
         # # Or verify confirmation message
         # save_confirmation_locator = wait.until(expcond.visibility_of_element_located((By.ID, "confirmation")))
