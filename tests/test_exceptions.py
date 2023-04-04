@@ -48,7 +48,6 @@ class TestExceptionsScenarios:
         assert confirmation_message == "Row 2 was saved", "Unexpected confirmation message received"
 
     @pytest.mark.exceptions
-    @pytest.mark.debug
     def test_invalid_element_state_exception(self, driver):
         # Open page
         driver.get("https://practicetestautomation.com/practice-test-exceptions/")
@@ -74,3 +73,25 @@ class TestExceptionsScenarios:
         # save_confirmation_locator = wait.until(expcond.visibility_of_element_located((By.ID, "confirmation")))
         # save_confirmation_message = save_confirmation_locator.text
         # assert save_confirmation_message == "Row 1 was saved", "Did not receive save confirmation message"
+
+    @pytest.mark.exceptions
+    @pytest.mark.debug
+    def test_stale_element_reference_exception(self, driver):
+        # Open page
+        driver.get("https://practicetestautomation.com/practice-test-exceptions/")
+
+        # Find the instructions text element
+        instructions_text_locator = driver.find_element(By.XPATH, "//p[@id='instructions']")
+        assert instructions_text_locator.is_displayed(), "The instructions text element is not displayed and it should"
+
+        # Push add button
+        driver.find_element(By.XPATH, "//div[@id='row1']/button[@name='Add']").click()
+
+        # Verify instruction text element is no longer displayed by calling a deleted element,
+        # to practice the StaleElementReference exception
+        # assert not instructions_text_locator.is_displayed(), "The instructions text element should not be displayed"
+
+        # Verify that instruction text element is no longer displayed by checking that it dissapears and the space is empty
+        wait = WebDriverWait(driver, 10)
+        assert wait.until(expcond.invisibility_of_element_located((By.XPATH, "//p[@id='instructions']"))), \
+            "The instructions text element should not displayed"
