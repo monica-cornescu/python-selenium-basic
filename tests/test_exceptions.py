@@ -75,7 +75,6 @@ class TestExceptionsScenarios:
         # assert save_confirmation_message == "Row 1 was saved", "Did not receive save confirmation message"
 
     @pytest.mark.exceptions
-    @pytest.mark.debug
     def test_stale_element_reference_exception(self, driver):
         # Open page
         driver.get("https://practicetestautomation.com/practice-test-exceptions/")
@@ -95,3 +94,22 @@ class TestExceptionsScenarios:
         wait = WebDriverWait(driver, 10)
         assert wait.until(expcond.invisibility_of_element_located((By.XPATH, "//p[@id='instructions']")),
                           "The instructions text element should not be displayed")
+
+    @pytest.mark.exceptions
+    @pytest.mark.debug
+    def test_timeout_exception(self, driver):
+        # Open page
+        driver.get("https://practicetestautomation.com/practice-test-exceptions/")
+
+        # Click Add button
+        driver.find_element(By.XPATH, "//div[@id='row1']/button[@name='Add']").click()
+
+        # Wait for 3 seconds for the second input field to be displayed, insufficient, causes TimeoutException
+        # Then we change it to 6 so that the test passes
+        wait = WebDriverWait(driver, 6)
+        row2_input_field_element = wait.until(
+            expcond.visibility_of_element_located((By.XPATH, "//div[@id='row2']/input")),
+            'Failed while waiting for row2 input field to be displayed!')
+
+        # Verify second input field is displayed
+        assert row2_input_field_element.is_displayed()
