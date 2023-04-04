@@ -13,7 +13,8 @@ class TestExceptionsScenarios:
         add_button_locator = driver.find_element(By.ID, "add_btn")
         add_button_locator.click()
 
-        # create an explicit wait to wait for the row2 web element to show up
+        # create an explicit wait to wait for the row2 web element to show up;
+        # without this step the element doesn't show up and we get NoSuchElementException
         wait = WebDriverWait(driver, 6)
         row2_input_field_element = wait.until(
             expcond.presence_of_element_located((By.XPATH, "//div[@id='row2']/input")))
