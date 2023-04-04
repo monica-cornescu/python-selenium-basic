@@ -93,5 +93,5 @@ class TestExceptionsScenarios:
 
         # Verify that instruction text element is no longer displayed by checking that it dissapears and the space is empty
         wait = WebDriverWait(driver, 10)
-        assert wait.until(expcond.invisibility_of_element_located((By.XPATH, "//p[@id='instructions']"))), \
-            "The instructions text element should not displayed"
+        assert wait.until(expcond.invisibility_of_element_located((By.XPATH, "//p[@id='instructions']")),
+                          "The instructions text element should not be displayed")
