@@ -16,7 +16,7 @@ class LoginPage(BasePage):
         super().__init__(driver)
 
     def open(self, url: str = __url):
-        super().open_url(self.__url)
+        super()._open_url(self.__url)
 
     # def execute_login(self, username: str, password: str):   # upgrading this to use parent class BasePage
     #     # Type the username in its location after checking for visibility of element

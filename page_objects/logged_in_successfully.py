@@ -19,6 +19,6 @@ class LoggedInSuccessfully(BasePage):
     def verify_expected_text_is_displayed(self) -> str:
         return super()._return_text(self.__expected_text)
 
-    @property
     def verify_logout_button_is_displayed(self) -> bool:
-        return super().is_displayed(self.__log_out_button)
+        return super()._is_displayed(self.__log_out_button)
+
