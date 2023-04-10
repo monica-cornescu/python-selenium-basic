@@ -9,7 +9,7 @@ class TestNegativeScenarios:
     @pytest.mark.parametrize("username, password, expected_error_message",
                              [("incorrectUser", "Password123", "Your username is invalid!"),
                               ("student", "incorrectPassword", "Your password is invalid!")])
-    def test_negative_username(self, driver, username, password, expected_error_message):
+    def test_negative_login(self, driver, username, password, expected_error_message):
         # Go to webpage
         driver.get("https://practicetestautomation.com/practice-test-login/")
 

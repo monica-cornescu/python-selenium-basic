@@ -11,6 +11,7 @@ class LoginPage(BasePage):
     __username_field = (By.ID, "username")
     __password_field = (By.NAME, "password")
     __submit_button = (By.XPATH, "//button[@class='btn']")
+    __expected_error_text = (By.ID, "error")
 
     def __init__(self, driver: WebDriver):
         super().__init__(driver)
@@ -36,4 +37,7 @@ class LoginPage(BasePage):
         super()._insert_text(self.__username_field, username)
         super()._insert_text(self.__password_field, password)
         super()._click(self.__submit_button)
+
+    def verify_expected_error_is_displayed(self) -> str:
+        return super()._return_text(self.__expected_error_text, 3)
 
