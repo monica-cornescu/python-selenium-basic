@@ -97,7 +97,6 @@ class TestExceptionsScenarios:
                           "The instructions text element should not be displayed")
 
     @pytest.mark.exceptions
-    @pytest.mark.debug
     def test_timeout_exception(self, driver):
         # Open page
         driver.get("https://practicetestautomation.com/practice-test-exceptions/")

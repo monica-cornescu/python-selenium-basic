@@ -16,6 +16,14 @@ class BasePage:
         wait = WebDriverWait(self._driver, time)
         wait.until(expcond.visibility_of_element_located(locator))
 
+    def _wait_until_element_is_invisible(self, locator: tuple, time: int = 10):
+        wait = WebDriverWait(self._driver, time)
+        wait.until(expcond.invisibility_of_element_located(locator))
+
+    def _wait_until_element_is_clickable(self, locator: tuple, time: int = 10):
+        wait = WebDriverWait(self._driver, time)
+        wait.until(expcond.element_to_be_clickable(locator))
+
     def _insert_text(self, locator: tuple, text: str, time: int = 10):
         self._wait_until_element_is_visible(locator, time)
         self._find(locator).send_keys(text)
@@ -23,6 +31,10 @@ class BasePage:
     def _click(self, locator: tuple, time: int = 10):
         self._wait_until_element_is_visible(locator, time)
         self._find(locator).click()
+
+    def _clear_content(self, locator: tuple, time: int = 10):
+        self._wait_until_element_is_visible(locator, time)
+        self._find(locator).clear()
 
     @property  # moved this public method from loggedin successfully page object because it can be called from any page
     def get_current_url(self) -> str:
@@ -40,3 +52,5 @@ class BasePage:
     def _return_text(self, locator: tuple, time: int = 10) -> str:
         self._wait_until_element_is_visible(locator, time)
         return self._find(locator).text
+
+
